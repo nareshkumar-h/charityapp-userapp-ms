@@ -32,11 +32,14 @@ public class DonorController {
 	public ResponseEntity<?> donorLogin(@RequestBody LoginDTO login) {
 		Donor donorResponseObj = null;
 		Donor donorObj = new Donor();
+		donorObj.setEmail(login.getEmail());
+		donorObj.setPassword(login.getPassword());
 		donorResponseObj = donorService.donorLogin(donorObj);
 		if (donorResponseObj != null) {
 			return new ResponseEntity<>(donorResponseObj, HttpStatus.OK);
 		} else {
-			return new ResponseEntity<>(donorResponseObj, HttpStatus.BAD_REQUEST);
+			Message message = new Message(MessageConstant.INVALID_CREDENTIAL);
+			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
 	}
 }
