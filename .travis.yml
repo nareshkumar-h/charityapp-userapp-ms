@@ -3,8 +3,8 @@ language: java
 addons:
   sonarcloud:
     organization: "nareshkumar-h-github"
-    #token:
-     # secure: 584e849e517e4e59720f42f40a80206739f92078
+    token:
+      secure: f4e114228994dab28cecf0f8d2c10db1d7b94059
 cache:
   directories:
     - '$HOME/.m2/repository'
