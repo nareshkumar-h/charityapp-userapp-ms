@@ -11,16 +11,16 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="donor")
+@Table(name = "donor")
 public class Donor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private Integer id;
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
-	@Column(name="email")
+	@Column(name = "email")
 	private String email;
-	@Column(name="password")
+	@Column(name = "password")
 	private String password;
 }

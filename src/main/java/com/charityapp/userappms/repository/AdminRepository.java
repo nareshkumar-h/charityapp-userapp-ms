@@ -10,8 +10,5 @@ import com.charityapp.userappms.model.Admin;
 @Repository
 public interface AdminRepository extends JpaRepository<Admin, Integer> {
 	@Query(" FROM Admin a WHERE a.email = :email AND a.password = :password")
-	Admin findByEmailAndPassword(
-			@Param("email") String email,
-			@Param("password") String password
-			);
+	Admin findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 }

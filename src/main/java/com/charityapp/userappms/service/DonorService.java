@@ -8,20 +8,19 @@ import com.charityapp.userappms.repository.DonorRepository;
 
 @Service
 public class DonorService {
-	
+
 	@Autowired
 	private DonorRepository donorRepoObj;
-	
-	public Donor donorLogin(final Donor donorObj)
-	{
+
+	public Donor donorLogin(final Donor donorObj) {
 		Donor donorResponseObj = null;
 		String email = donorObj.getEmail();
 		String password = donorObj.getPassword();
-		donorResponseObj = donorRepoObj.findByEmailAndPassword(email,password);
+		donorResponseObj = donorRepoObj.findByEmailAndPassword(email, password);
 		return donorResponseObj;
 	}
-	public Donor donorRegister(final Donor donorObj)
-	{
+
+	public Donor donorRegister(final Donor donorObj) {
 		Donor donorResponseObj = null;
 		donorResponseObj = donorRepoObj.save(donorObj);
 		return donorResponseObj;

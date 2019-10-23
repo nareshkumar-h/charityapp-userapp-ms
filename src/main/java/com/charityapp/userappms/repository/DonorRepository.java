@@ -9,9 +9,6 @@ import com.charityapp.userappms.model.Donor;
 
 @Repository
 public interface DonorRepository extends JpaRepository<Donor, Integer> {
-	@Query("SELECT d.email,d.name,d.id FROM Donor d WHERE d.email = :email AND d.password = :password")
-	Donor findByEmailAndPassword(
-			@Param("email") String email,
-			@Param("password") String password
-			);
+	@Query(" FROM Donor d WHERE d.email = :email AND d.password = :password")
+	Donor findByEmailAndPassword(@Param("email") String email, @Param("password") String password);
 }

@@ -10,16 +10,16 @@ import com.charityapp.userappms.repository.AdminRepository;
 public class AdminService {
 	@Autowired
 	private AdminRepository adminRepoObj;
-	public Admin adminLogin(final Admin adminObj)
-	{
+
+	public Admin adminLogin(final Admin adminObj) {
 		Admin adminResponseObj = null;
 		String email = adminObj.getEmail();
 		String password = adminObj.getPassword();
 		adminResponseObj = adminRepoObj.findByEmailAndPassword(email, password);
 		return adminResponseObj;
 	}
-	public Admin adminRegister(final Admin adminObj)
-	{
+
+	public Admin adminRegister(final Admin adminObj) {
 		Admin adminResponseObj = null;
 		adminResponseObj = adminRepoObj.save(adminObj);
 		return adminResponseObj;
