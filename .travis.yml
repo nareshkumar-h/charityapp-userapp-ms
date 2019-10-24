@@ -30,6 +30,14 @@ script:
 notifications:
   slack: javafullstackgroup:cU6yGmSyVRshhITnnXELpBug
   
+deploy:
+  provider: releases
+  api_key: "GITHUB OAUTH TOKEN"
+  file: "FILE TO UPLOAD"
+  skip_cleanup: true
+  on:
+    tags: true
+  
 
   
   
