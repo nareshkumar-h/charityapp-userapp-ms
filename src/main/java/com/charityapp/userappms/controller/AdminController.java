@@ -30,7 +30,7 @@ public class AdminController {
 	@ApiResponses(value = { @ApiResponse(code = 200, message = MessageConstant.LOGIN_SUCCESS, response = Admin.class),
 			@ApiResponse(code = 400, message = MessageConstant.INVALID_CREDENTIAL, response = Message.class) })
 
-	public ResponseEntity<?> adminLogin(@RequestBody LoginDTO login) {
+	public ResponseEntity<Object> adminLogin(@RequestBody LoginDTO login) {
 		Admin adminObj = new Admin();
 		Admin adminResponseObj = null;
 		adminObj.setEmail(login.getEmail());

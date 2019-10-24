@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.charityapp.userappms.dto.LoginDTO;
+import com.charityapp.userappms.dto.RegisterDTO;
 import com.charityapp.userappms.model.Donor;
 import com.charityapp.userappms.service.DonorService;
 import com.charityapp.userappms.util.Message;
@@ -29,7 +30,7 @@ public class DonorController {
 	@ApiOperation("Donor Login")
 	@ApiResponses(value = { @ApiResponse(code = 200, message = MessageConstant.LOGIN_SUCCESS, response = Donor.class),
 			@ApiResponse(code = 400, message = MessageConstant.INVALID_CREDENTIAL, response = Message.class) })
-	public ResponseEntity<?> donorLogin(@RequestBody LoginDTO login) {
+	public ResponseEntity<Object> donorLogin(@RequestBody LoginDTO login) {
 		Donor donorResponseObj = null;
 		Donor donorObj = new Donor();
 		donorObj.setEmail(login.getEmail());
@@ -42,4 +43,25 @@ public class DonorController {
 			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
 		}
 	}
+	
+	@PostMapping("register")
+	@ApiOperation("Donor Register")
+	@ApiResponses(value = { @ApiResponse(code = 200, message = MessageConstant.LOGIN_SUCCESS, response = Donor.class),
+			@ApiResponse(code = 400, message = MessageConstant.INVALID_CREDENTIAL, response = Message.class) })
+	public ResponseEntity<Object> donorRegister(@RequestBody RegisterDTO register)
+	{
+		Donor donorResponseObj = null;
+		Donor donorObj =new Donor();
+		donorObj.setName(register.getName());
+		donorObj.setEmail(register.getEmail());
+		donorObj.setPassword(register.getPassword());
+		donorResponseObj = donorService.donorRegister(donorObj);
+		if(donorResponseObj != null)
+		{
+			return new ResponseEntity<>(donorResponseObj,HttpStatus.OK);
+		} else {
+			Message message  = new Message(MessageConstant.REGISTER_FAILED);
+			return new ResponseEntity<>(message, HttpStatus.BAD_REQUEST);
+		}
+}
 }

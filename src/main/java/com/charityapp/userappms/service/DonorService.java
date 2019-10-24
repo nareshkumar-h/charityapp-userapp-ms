@@ -1,7 +1,9 @@
 package com.charityapp.userappms.service;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.charityapp.userappms.model.Donor;
 import com.charityapp.userappms.repository.DonorRepository;
@@ -20,6 +22,7 @@ public class DonorService {
 		return donorResponseObj;
 	}
 
+	@Transactional
 	public Donor donorRegister(final Donor donorObj) {
 		Donor donorResponseObj = null;
 		donorResponseObj = donorRepoObj.save(donorObj);
